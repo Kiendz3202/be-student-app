@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
-import { User } from './user.entity';
+import { User, UserRole, UserStatus } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
@@ -11,10 +11,13 @@ export class UsersService {
     private readonly usersRepository: Repository<User>,
   ) {}
 
-  create(createUserDto: CreateUserDto): Promise<User> {
+  create(): Promise<User> {
     const user = new User();
-    user.firstName = createUserDto.firstName;
-    user.lastName = createUserDto.lastName;
+    user.name = 'teacher name',
+    user.email = 'teacher email',
+    user.password = 'teacher password',
+    user.role = UserRole.TEACHER,
+    user.status = UserStatus.ACTIVE
 
     return this.usersRepository.save(user);
   }
