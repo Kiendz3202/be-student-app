@@ -25,6 +25,18 @@ export class Class {
   @Column()
   description: string;
 
+  @Column()
+  semester: string;
+
+  @Column()
+  maxStudents: number;
+
+  @Column()
+  startDate: number;
+
+  @Column()
+  endDate: number;
+
   @ManyToOne(() => Teacher, (teacher) => teacher.classes)
   teacher: Teacher;
 

@@ -10,10 +10,22 @@ import {
 import { CreateUserDto } from "../dto/create-user.dto";
 import { User } from "../entities/user.entity";
 import { UsersService } from "../services/users.service";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Teacher } from "../entities/teacher.entity";
+import { Student } from "../entities/student.entity";
 
 @Controller("users")
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    @InjectRepository(User)
+    private readonly usersRepository: Repository<User>,
+    @InjectRepository(Teacher)
+    private readonly teacherRepository: Repository<Teacher>,
+    @InjectRepository(Student)
+    private readonly studentRepository: Repository<Student>
+  ) {}
 
   @Post()
   create(@Body() createUser: any): Promise<User> {
