@@ -13,9 +13,10 @@ import { Assignment } from "./assignment.entity";
 import { Attendance } from "./attendance.entity";
 import { StudyMaterial } from "./study-material.entity";
 import { LeaveRequest } from "./leave-request.entity";
+import { BaseEntity } from "./base.entity";
 
 @Entity()
-export class Class {
+export class Class extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

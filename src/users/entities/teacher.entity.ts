@@ -11,10 +11,11 @@ import {
 import { User } from "./user.entity";
 import { Class } from "./class.entity";
 import { Assignment } from "./assignment.entity";
+import { BaseEntity } from "./base.entity";
 
 //cần tạo user trước rồi mới tạo teacher or student
 @Entity()
-export class Teacher {
+export class Teacher extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

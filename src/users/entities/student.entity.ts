@@ -14,10 +14,11 @@ import { Assignment } from "./assignment.entity";
 import { Attendance } from "./attendance.entity";
 import { LeaveRequest } from "./leave-request.entity";
 import { SubmittedAssignment } from "./submitted-assignment.entity";
+import { BaseEntity } from "./base.entity";
 
 //cần tạo user trước rồi mới tạo teacher or student
 @Entity()
-export class Student {
+export class Student extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

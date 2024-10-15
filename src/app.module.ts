@@ -1,7 +1,8 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { UsersModule } from "./users/users.module";
+// import { UsersModule } from "./users/users.module";
 import { join } from "path";
+import { UsersModule } from "./users/users.module";
 
 @Module({
   imports: [
@@ -13,8 +14,8 @@ import { join } from "path";
       password: "root",
       database: "test",
       autoLoadEntities: true,
-      synchronize: true,
-      dropSchema: true,
+      // synchronize: true,
+      // dropSchema: true,
       entities: [join(__dirname, "**", "*.entity{.ts,.js}")],
     }),
     UsersModule,

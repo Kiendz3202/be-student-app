@@ -18,6 +18,7 @@ export abstract class BaseEntity {
   @BeforeInsert()
   setCreatedAt() {
     this.createdAt = Math.floor(Date.now() / 1000); // UNIX timestamp tính theo giây
+    this.updatedAt = Math.floor(Date.now() / 1000); // UNIX timestamp tính theo giây
   }
 
   @BeforeUpdate()
