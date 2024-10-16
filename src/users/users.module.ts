@@ -9,12 +9,30 @@ import { ClassController } from "./controllers/class.controller";
 import { Class } from "./entities/class.entity";
 import { StudyMaterial } from "./entities/study-material.entity";
 import { StudyMaterialController } from "./controllers/study-material.controller";
+import { Assignment } from "./entities/assignment.entity";
+import { SubmittedAssignment } from "./entities/submitted-assignment.entity";
+import { AssignmentController } from "./controllers/assignment.controller";
+import { SubmittedAssignmentController } from "./controllers/submitted-assignment.controller";
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User, Teacher, Student, Class, StudyMaterial]),
+    TypeOrmModule.forFeature([
+      User,
+      Teacher,
+      Student,
+      Class,
+      StudyMaterial,
+      Assignment,
+      SubmittedAssignment,
+    ]),
   ],
   providers: [UsersService],
-  controllers: [UsersController, ClassController, StudyMaterialController],
+  controllers: [
+    UsersController,
+    ClassController,
+    StudyMaterialController,
+    AssignmentController,
+    SubmittedAssignmentController,
+  ],
 })
 export class UsersModule {}

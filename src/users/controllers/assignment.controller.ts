@@ -17,88 +17,88 @@ import { Teacher } from "../entities/teacher.entity";
 import { Student } from "../entities/student.entity";
 import { Class } from "../entities/class.entity";
 import { StudyMaterial } from "../entities/study-material.entity";
+import { Assignment } from "../entities/assignment.entity";
 
-@Controller("study-material")
-export class StudyMaterialController {
+@Controller("assignment")
+export class AssignmentController {
   constructor(
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
     @InjectRepository(Teacher)
     private readonly teacherRepository: Repository<Teacher>,
-    @InjectRepository(StudyMaterial)
-    private readonly studyMaterialRepository: Repository<StudyMaterial>,
+    @InjectRepository(Assignment)
+    private readonly assignmentRepository: Repository<Assignment>,
     @InjectRepository(Class)
     private readonly classRepository: Repository<Class>
   ) {}
 
   @Get(":id")
-  // http://localhost:3000/study-material/1
+  //   http://localhost:3000/assignment/1
+  //get all assignments of a class
   async getAllOfClass(@Param("id") id: number) {
     const classEntity = await this.classRepository.findOne({
       where: { id },
       relations: {
-        studyMaterials: true,
+        assignments: true,
       },
     });
     return {
       statusCode: 200,
-      data: classEntity?.studyMaterials || [],
+      data: classEntity?.assignments || [],
     };
   }
 
   @Get("/detail/:id")
-  async getDetailMaterialClass(@Param("id") id: number) {
-    const materialStudyEntity = await this.studyMaterialRepository.findOne({
+  async getDetailAssignmentClass(@Param("id") id: number) {
+    const assignmentEntity = await this.assignmentRepository.findOne({
       where: { id },
     });
     return {
       statusCode: 200,
-      data: materialStudyEntity,
+      data: assignmentEntity,
     };
   }
 
   @Post()
-  // teacher create
-  async createStudyMaterial(@Param("id") idClass: number, @Body() body: any) {
+  //teacher create
+  async createAssignment(@Param("id") idClass: number, @Body() body: any) {
     const classEntity = await this.classRepository.findOne({
       where: { id: idClass },
     });
-    let newStudyMaterial = this.studyMaterialRepository.create({
+
+    const assignment = await this.assignmentRepository.create({
       ...body,
       class: classEntity,
     });
 
-    const studyMaterialCreated =
-      await this.studyMaterialRepository.save(newStudyMaterial);
+    const assignmentCreated = await this.assignmentRepository.save(assignment);
 
     return {
       statusCode: 200,
-      data: studyMaterialCreated,
+      data: assignmentCreated,
     };
   }
 
   @Post("update")
   //teacher update
-  async updateStudyMaterial(@Param("id") id: number, @Body() body: any) {
-    const studyMaterial = await this.studyMaterialRepository.findOne({
+  async updateAssignment(@Param("id") id: number, @Body() body: any) {
+    const assignment = await this.assignmentRepository.findOne({
       where: { id },
     });
 
-    Object.assign(studyMaterial, body);
+    Object.assign(assignment, body);
 
-    const studyMaterialUpdated =
-      await this.studyMaterialRepository.save(studyMaterial);
+    const assignmentUpdated = await this.assignmentRepository.save(assignment);
 
     return {
       statusCode: 200,
-      data: studyMaterialUpdated,
+      data: assignmentUpdated,
     };
   }
 
   @Post("delete/:id")
-  //delete by id study material
-  async deleteStudyMaterial(@Param("id") id: number) {
-    await this.studyMaterialRepository.delete({ id });
+  async deleteAssignment(@Param("id") id: number) {
+    await this.assignmentRepository.delete({ id });
     return {
       statusCode: 200,
     };
