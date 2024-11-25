@@ -27,6 +27,11 @@ export class UsersController {
     private readonly studentRepository: Repository<Student>
   ) {}
 
+  @Get('/health')
+  findAll(): Promise<User[]> {
+    return 'user health';
+  }
+
   @Post()
   create(@Body() createUser: any): Promise<User> {
     console.log(createUser);
