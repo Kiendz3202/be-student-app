@@ -27,7 +27,7 @@ export class UsersController {
     private readonly studentRepository: Repository<Student>
   ) {}
 
-  @Get("/health")
+  @Get("/check/health")
   checkHealth(): string {
     return 'health ok';
   }
