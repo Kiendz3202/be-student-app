@@ -29,7 +29,7 @@ export class UsersController {
 
   @Get("/check/health")
   checkHealth(): string {
-    return 'health ok';
+    return 'health ok edit';
   }
 
   @Get(":id")
