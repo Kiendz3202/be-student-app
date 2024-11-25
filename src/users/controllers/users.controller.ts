@@ -32,6 +32,11 @@ export class UsersController {
     return this.usersService.findOne(id);
   }
 
+  @Get("/health")
+  checkHealth(): string {
+    return 'health ok';
+  }
+
   @Post()
   create(@Body() createUser: any): Promise<User> {
     console.log(createUser);
