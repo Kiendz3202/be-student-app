@@ -43,7 +43,6 @@ jobs:
 
       - name: Rebuild NestJS Docker container
         run: |
-          docker compose down
           docker compose up -d --build --remove-orphans
 
       - name: Clean up Docker images
