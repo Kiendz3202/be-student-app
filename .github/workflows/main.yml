@@ -48,4 +48,4 @@ jobs:
 
       - name: Clean up Docker images
         run: |
-          docker system prune -f
+          docker system prune -a --volumes -f
