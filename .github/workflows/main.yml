@@ -46,18 +46,18 @@ jobs:
         run: |
           docker-compose -f docker-compose.yml up -d
 
-      - name: Wait for MySQL to be ready
-        run: |
-          docker exec mysql mysqladmin --host=127.0.0.1 --user=root --password=root ping --silent
+      # - name: Wait for MySQL to be ready
+      #   run: |
+      #     docker exec mysql mysqladmin --host=127.0.0.1 --user=root --password=root ping --silent
 
       # - name: Run Tests
       #   run: |
       #     docker exec nestjs npm run test
 
-      - name: Rebuild NestJS Docker container
-        run: |
-          docker-compose -f docker-compose.yml down
-          docker-compose -f docker-compose.yml up -d
+      # - name: Rebuild NestJS Docker container
+      #   run: |
+      #     docker-compose -f docker-compose.yml down
+      #     docker-compose -f docker-compose.yml up -d
 
       - name: Clean up Docker images
         run: |
