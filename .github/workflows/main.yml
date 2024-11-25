@@ -54,10 +54,10 @@ jobs:
       #   run: |
       #     docker exec nestjs npm run test
 
-      # - name: Rebuild NestJS Docker container
-      #   run: |
-      #     docker-compose -f docker-compose.yml down
-      #     docker-compose -f docker-compose.yml up -d
+      - name: Rebuild NestJS Docker container
+        run: |
+          docker-compose -f docker-compose.yml down
+          docker-compose -f docker-compose.yml up -d
 
       - name: Clean up Docker images
         run: |
