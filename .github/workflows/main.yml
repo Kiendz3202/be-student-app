@@ -40,7 +40,7 @@ jobs:
 
       - name: Build NestJS Docker image
         run: |
-          docker build -t nestjs-app .
+          docker build -t nestjs-app . --no-cache
 
       - name: Run Docker Compose (up -d)
         run: |
