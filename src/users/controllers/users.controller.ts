@@ -28,7 +28,7 @@ export class UsersController {
   ) {}
 
   @Get('/health')
-  findAll(): string {
+  checkHealth(): string {
     return 'user health';
   }
 
