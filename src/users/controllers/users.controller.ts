@@ -27,6 +27,11 @@ export class UsersController {
     private readonly studentRepository: Repository<Student>
   ) {}
 
+  @Get(":id")
+  findOne(@Param("id", ParseIntPipe) id: number): Promise<User> {
+    return this.usersService.findOne(id);
+  }
+
   @Get('/health')
   checkHealth(): string {
     return 'user health';
@@ -41,11 +46,6 @@ export class UsersController {
   @Get()
   findAll(): Promise<User[]> {
     return this.usersService.findAll();
-  }
-
-  @Get(":id")
-  findOne(@Param("id", ParseIntPipe) id: number): Promise<User> {
-    return this.usersService.findOne(id);
   }
 
   @Delete(":id")
