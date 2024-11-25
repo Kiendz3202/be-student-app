@@ -28,7 +28,7 @@ export class UsersController {
   ) {}
 
   @Get('/health')
-  findAll(): Promise<User[]> {
+  findAll(): string {
     return 'user health';
   }
 
