@@ -38,13 +38,13 @@ jobs:
       #     sudo chmod +x /usr/local/bin/docker-compose
       #     docker-compose --version
 
-      - name: Build NestJS Docker image
-        run: |
-          docker build -t nestjs-app . --no-cache
+      # - name: Build NestJS Docker image
+      #   run: |
+      #     docker build -t nestjs-app . --no-cache
 
-      - name: Run Docker Compose (up -d)
-        run: |
-          docker-compose -f docker-compose.yml up -d
+      # - name: Run Docker Compose (up -d)
+      #   run: |
+      #     docker-compose -f docker-compose.yml up -d
 
       # - name: Wait for MySQL to be ready
       #   run: |
@@ -56,8 +56,8 @@ jobs:
 
       - name: Rebuild NestJS Docker container
         run: |
-          docker-compose -f docker-compose.yml down
-          docker-compose -f docker-compose.yml up -d
+          docker compose down
+          docker-compose up -d
 
       - name: Clean up Docker images
         run: |
